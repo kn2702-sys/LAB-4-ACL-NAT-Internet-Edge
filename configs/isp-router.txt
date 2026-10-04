@@ -1,0 +1,28 @@
+!
+! Lab 4 - ISP-Router : paste-ready config (simulated ISP)
+! NOTE: no static route back to 192.168.10.0/24 is configured on purpose.
+! NAT overload on Edge-Router hides every LAN address behind 203.0.113.1,
+! exactly like a real ISP that only ever sees your public address.
+!
+enable
+configure terminal
+!
+hostname ISP-Router
+no ip domain-lookup
+!
+interface GigabitEthernet0/0/0
+ description *** to Edge-Router 203.0.113.0/30 ***
+ ip address 203.0.113.2 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description *** Simulated Internet 198.51.100.0/24 ***
+ ip address 198.51.100.1 255.255.255.0
+ no shutdown
+!
+interface GigabitEthernet0/0/2
+ description *** UNUSED ***
+ shutdown
+!
+end
+write memory

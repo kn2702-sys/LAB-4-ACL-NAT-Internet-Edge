@@ -1,0 +1,29 @@
+!
+! Lab 4 - LAN-Switch : paste-ready config (plain L2 access switch)
+!
+enable
+configure terminal
+!
+hostname LAN-Switch
+!
+interface FastEthernet0/1
+ description *** PC-User1 ***
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description *** PC-User2 ***
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description *** PC-Restricted (denied-subnet demo) ***
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ description *** Uplink to Edge-Router G0/0/0 ***
+ switchport mode access
+!
+end
+write memory

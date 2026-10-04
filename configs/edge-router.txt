@@ -1,0 +1,51 @@
+!
+! Lab 4 - Edge-Router : paste-ready config
+! Inside  192.168.10.0/24 (GigabitEthernet0/0/0)
+! Outside 203.0.113.0/30  (GigabitEthernet0/0/1 -> ISP)
+!
+enable
+configure terminal
+!
+hostname Edge-Router
+no ip domain-lookup
+!
+interface GigabitEthernet0/0/0
+ description *** INSIDE - LAN 192.168.10.0/24 ***
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+ ip access-group 101 in
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description *** OUTSIDE - ISP 203.0.113.0/30 ***
+ ip address 203.0.113.1 255.255.255.252
+ ip nat outside
+ no shutdown
+!
+interface GigabitEthernet0/0/2
+ description *** UNUSED ***
+ shutdown
+!
+ip route 0.0.0.0 0.0.0.0 203.0.113.2
+!
+! --- NAT overload (PAT) ---
+access-list 1 permit 192.168.10.0 0.0.0.255
+ip nat inside source list 1 interface GigabitEthernet0/0/1 overload
+!
+! --- Internet-edge extended ACL 101, inbound on the inside interface ---
+access-list 101 permit tcp 192.168.10.0 0.0.0.255 any eq 80
+access-list 101 permit tcp 192.168.10.0 0.0.0.255 any eq 443
+access-list 101 permit udp 192.168.10.0 0.0.0.255 any eq 53
+access-list 101 permit icmp 192.168.10.0 0.0.0.255 any
+access-list 101 deny tcp any any eq 23
+access-list 101 deny ip 192.168.10.128 0.0.0.127 any
+access-list 101 permit ip any any
+!
+end
+write memory
+!
+! Verify with:
+!   show ip nat translations
+!   show ip nat statistics
+!   show access-lists 101
+!   show ip interface GigabitEthernet0/0/0 | include access
