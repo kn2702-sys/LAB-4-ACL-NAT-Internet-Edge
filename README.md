@@ -9,6 +9,8 @@ variant so you can practice structured troubleshooting the way a NOC does it.
 > Cisco Packet Tracer — PAT/NAT overload, extended ACL egress policy, and a
 > repeatable 6-step fault-isolation methodology.*
 
+**Lab series:** [Lab 1](https://github.com/kn2702-sys/enterprise-vlan-lab) · [Lab 2](https://github.com/kn2702-sys/dhcp-dns-failure-lab) · [Lab 3](https://github.com/kn2702-sys/LAB-3-Multi-Router-OSPF-Network) · **Lab 4** · [Lab 5](https://github.com/kn2702-sys/LAB-5-Site-to-Site-VPN-Firewall) · [Lab 6](https://github.com/kn2702-sys/LAB-6-Wireshark-NOC-Troubleshooting) · [Lab 7](https://github.com/kn2702-sys/LAB-7-NOC-Incident-Simulation) · [Lab 8](https://github.com/kn2702-sys/LAB-8-AWS-VPC-Networking)
+
 ## Skills demonstrated
 
 - NAT overload (PAT) for internet access from RFC 1918 space
