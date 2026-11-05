@@ -90,7 +90,7 @@ in place it never sees a private address, just like a real ISP.
 ## Repository contents
 
 ```
-Lab-4-ACL-NAT-Internet-Edge.pkt          # working lab — open in Packet Tracer
+Lab-4-ACL-NAT-Internet-Edge.pkt          # generated from this repo's configs (pt_codec) — open in Packet Tracer; not yet verified by opening in real Packet Tracer
 Lab-4-ACL-NAT-Internet-Edge-BROKEN.pkt    # fault injected (see docs/TROUBLESHOOTING.md)
 configs/
   edge-router.txt                         # paste-ready CLI (Edge-Router)
