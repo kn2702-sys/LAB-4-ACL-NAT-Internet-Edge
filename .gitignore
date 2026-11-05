@@ -1,0 +1,8 @@
+# Local/editor artifacts and secrets — never commit real credentials
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+__pycache__/
+*.pyc
+.env
